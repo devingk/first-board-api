@@ -1,12 +1,11 @@
 package com.devingk.firstboard.entity;
 
+import com.devingk.firstboard.dto.request.ArticleCreationRequest;
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
+@Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -22,6 +21,14 @@ public class Article extends BaseTime {
 
     @Lob
     private String contents;
+
+    public static Article from(ArticleCreationRequest request) {
+        return Article.builder()
+                .title(request.title())
+                .author(request.author())
+                .contents(request.contents())
+                .build();
+    }
 
     @Override
     public String toString() {
