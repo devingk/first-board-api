@@ -15,7 +15,6 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-
     public ArticleCreationResponse createArticle(ArticleCreationRequest request) {
 
         Article article = articleRepository.save(Article.from(request));
