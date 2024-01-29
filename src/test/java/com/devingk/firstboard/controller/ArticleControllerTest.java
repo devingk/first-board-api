@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.ResponseEntity;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.*;
 
 @WebMvcTest(controllers = ArticleController.class)
 class ArticleControllerTest {
@@ -30,7 +31,7 @@ class ArticleControllerTest {
         //given
         ArticleCreationRequest request = TestArticle.articleCreationRequest();
         ArticleCreationResponse articleCreationResponse = ArticleCreationResponse.from(TestArticle.article(request));
-        BDDMockito.given(articleService.createArticle(request)).willReturn(articleCreationResponse);
+        given(articleService.createArticle(request)).willReturn(articleCreationResponse);
 
         ResponseEntity<ArticleCreationResponse> expectedResponse = ResponseEntity.ok(articleCreationResponse);
 

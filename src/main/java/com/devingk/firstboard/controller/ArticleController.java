@@ -1,7 +1,9 @@
 package com.devingk.firstboard.controller;
 
 import com.devingk.firstboard.dto.request.ArticleCreationRequest;
+import com.devingk.firstboard.dto.request.ArticleListRequest;
 import com.devingk.firstboard.dto.response.ArticleCreationResponse;
+import com.devingk.firstboard.dto.response.ArticleListResponse;
 import com.devingk.firstboard.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,4 +23,12 @@ public class ArticleController {
 
         return ResponseEntity.ok(articleService.createArticle(request));
     }
+
+    @GetMapping
+    public ResponseEntity<ArticleListResponse> listArticles(
+            @Validated @RequestBody ArticleListRequest request) {
+
+        return ResponseEntity.ok(articleService.listArticles(request));
+    }
 }
+

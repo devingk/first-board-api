@@ -1,7 +1,9 @@
 package com.devingk.firstboard.service;
 
 import com.devingk.firstboard.dto.request.ArticleCreationRequest;
+import com.devingk.firstboard.dto.request.ArticleListRequest;
 import com.devingk.firstboard.dto.response.ArticleCreationResponse;
+import com.devingk.firstboard.dto.response.ArticleListResponse;
 import com.devingk.firstboard.entity.Article;
 import com.devingk.firstboard.repository.ArticleRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +22,9 @@ public class ArticleService {
         Article article = articleRepository.save(Article.from(request));
 
         return ArticleCreationResponse.from(article);
+    }
+
+    public ArticleListResponse listArticles(ArticleListRequest request) {
+        return null;
     }
 }
